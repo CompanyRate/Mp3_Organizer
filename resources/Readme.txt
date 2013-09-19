@@ -1,5 +1,7 @@
 Mp3 Organizer
-Developed by: Greg Pearson for www.Companyrate.net
+Developed by: Greg Pearson for www.Companyrate.net 
+Email Contact : Developer@companyrate.net 
+
 
 Programming Language : Java using Swing for the GUI 
 
