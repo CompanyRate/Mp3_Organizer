@@ -1,0 +1,14 @@
+Mp3_Organizer
+=============
+
+Crude mp3 batch file organizer, uses beagalbuddy ID3 taging information lookup
+Mp3 Organizer
+Developed by: Greg Pearson for www.Companyrate.net 
+Email Contact : Developer@companyrate.net 
+
+
+Programming Language : Java using Swing for the GUI 
+
+Concept: This application's main function is to quickly organize a batch of MP3 files. The application also uses 
+beagel buddy to decifer the MP3 tag from a given file.
+ 
