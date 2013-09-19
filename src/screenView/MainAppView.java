@@ -29,8 +29,9 @@ public class MainAppView extends javax.swing.JFrame {
         outputDir = new javax.swing.JTextField();
         processBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        msgCenter = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        progressDS = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,10 +43,15 @@ public class MainAppView extends javax.swing.JFrame {
         AppName.setText("Mp3 Organizer Application");
 
         processBTN.setText("Process Files");
+        processBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processBTNActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        msgCenter.setColumns(20);
+        msgCenter.setRows(5);
+        jScrollPane1.setViewportView(msgCenter);
 
         jLabel1.setText("Files Processed or error message    ");
 
@@ -61,7 +67,9 @@ public class MainAppView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(progressDS, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(processBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -88,21 +96,55 @@ public class MainAppView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(outputLb)
                     .addComponent(outputDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(processBTN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(progressDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void processBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBTNActionPerformed
+        // once user presses process button get user's directory information
+        // and other information needed to process 
+        String input = inputDir.getText();
+        String output = outputDir.getText();
+       
+        //check directory 
+        boolean inputCk = DirectoryFileFunctions.DirectoryCheck.dirCheck(input);
+        boolean outputCk = DirectoryFileFunctions.DirectoryCheck.dirCheck(output);
+
+        
+        // Check directories to make sure they are different 
+        if (inputCk && outputCk){
+               msgCenter.setText("Direcotry passes"); 
+        //directory are valid check to see if they are different then process
+        boolean diff = DirectoryFileFunctions.DirectoryCheck.compareDir(input, output);
+           
+               if (diff){
+                   
+               } else {
+                   
+               }
+               
+               
+        } else {
+            msgCenter.setText("There was a problem your directories appear to be the same");    
+        }
+        
+        //Mp3_orgProcess.ProcessFiles.ProcessFiles(inputDir, outputDir);
+        
+        //end of program
+    }//GEN-LAST:event_processBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,9 +186,10 @@ public class MainAppView extends javax.swing.JFrame {
     private javax.swing.JLabel inputLb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea msgCenter;
     private javax.swing.JTextField outputDir;
     private javax.swing.JLabel outputLb;
     private javax.swing.JButton processBTN;
+    private javax.swing.JProgressBar progressDS;
     // End of variables declaration//GEN-END:variables
 }
