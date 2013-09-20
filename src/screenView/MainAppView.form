@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -110,8 +110,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputDir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C:\u005cJavaProjects\u005cmusic\u005csource" containsInvalidXMLChars="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="outputDir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C:\u005cJavaProjects\u005cmusic\u005cdestination" containsInvalidXMLChars="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="processBTN">
       <Properties>

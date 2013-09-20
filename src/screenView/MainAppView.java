@@ -1,8 +1,14 @@
 package screenView;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
- * Mp3 Organizer MP3 Application to organize mp3 files
- * in a crude way that no other application has done before.
+ * Mp3 Organizer MP3 Application to organize mp3 files in a crude way that no
+ * other application has done before.
  */
 public class MainAppView extends javax.swing.JFrame {
 
@@ -41,6 +47,10 @@ public class MainAppView extends javax.swing.JFrame {
 
         AppName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         AppName.setText("Mp3 Organizer Application");
+
+        inputDir.setText("C:\\JavaProjects\\music\\source");
+
+        outputDir.setText("C:\\JavaProjects\\music\\destination");
 
         processBTN.setText("Process Files");
         processBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -118,31 +128,53 @@ public class MainAppView extends javax.swing.JFrame {
         // and other information needed to process 
         String input = inputDir.getText();
         String output = outputDir.getText();
-       
+
         //check directory 
         boolean inputCk = DirectoryFileFunctions.DirectoryCheck.dirCheck(input);
         boolean outputCk = DirectoryFileFunctions.DirectoryCheck.dirCheck(output);
 
-        
+
         // Check directories to make sure they are different 
-        if (inputCk && outputCk){
-               msgCenter.setText("Direcotry passes"); 
-        //directory are valid check to see if they are different then process
-        boolean diff = DirectoryFileFunctions.DirectoryCheck.compareDir(input, output);
-           
-               if (diff){
-                   
-               } else {
-                   
-               }
-               
-               
+        if (inputCk && outputCk) {
+            msgCenter.setText("Direcotry passes");
+            //directory are valid check to see if they are different then process
+            boolean diff = DirectoryFileFunctions.DirectoryCheck.compareDir(input, output);
+            if (diff) {
+                //directories are different and exist 
+                try {
+                    List<File> FileList = DirectoryFileFunctions.DirectoryCheck.fileList(input);
+
+                    for (File file : FileList) {
+                        //Process file 
+                        String fileLocation = file.toString();
+                        Mp3_orgProcess.ProcessFiles.ProcessFiles(fileLocation, output);
+
+                    }
+
+                } catch (IOException ex) {
+                    msgCenter.setText("There was a problem with a file");
+                    Logger.getLogger(MainAppView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+
+
+
+
+
+
+            } else {
+                // There was a problem 
+                msgCenter.setText("There was a problem your directories appear to be the same");
+            }
+
+
         } else {
-            msgCenter.setText("There was a problem your directories appear to be the same");    
+            msgCenter.setText("There was a problem your directories appear to be the same");
         }
-        
+
         //Mp3_orgProcess.ProcessFiles.ProcessFiles(inputDir, outputDir);
-        
+
         //end of program
     }//GEN-LAST:event_processBTNActionPerformed
 
