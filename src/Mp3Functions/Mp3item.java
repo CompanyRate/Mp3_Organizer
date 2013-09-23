@@ -7,6 +7,7 @@ package Mp3Functions;
 public class Mp3item {
     String Name;  // File name
     String FileLocation;  // Location on the drive directory in it's entire path (actual file)
+    String FileName; // Actual Filename
     String BPM;  // The BPM if listed in Tags 
     String ArtistName; // Artist or band name from Tags
     String TrackName;  // Track Name from Tags
@@ -14,7 +15,15 @@ public class Mp3item {
     String AlbumName; //from Tags
     String NewLocation;  // Where the file should be stored 
     String NewName;  // What the new file name should be
-     
+
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String FileName) {
+        this.FileName = FileName;
+    }
+    
 
     public static String DirectoryName(String Destination, String ArtistName, String AlbumName){
         String DirName = "";

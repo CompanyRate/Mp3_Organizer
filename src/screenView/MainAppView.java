@@ -144,23 +144,20 @@ public class MainAppView extends javax.swing.JFrame {
                 try {
                     List<File> FileList = DirectoryFileFunctions.DirectoryCheck.fileList(input);
 
+                    int cnt = 1;
+          
                     for (File file : FileList) {
                         //Process file 
                         String fileLocation = file.toString();
-                        Mp3_orgProcess.ProcessFiles.ProcessFiles(fileLocation, output);
-
+                        
+                        Mp3_orgProcess.ProcessFiles.ProcessFiles(fileLocation, output, cnt);
+                      cnt = cnt + 1;
                     }
 
                 } catch (IOException ex) {
                     msgCenter.setText("There was a problem with a file");
                     Logger.getLogger(MainAppView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-
-
-
-
-
 
 
             } else {
