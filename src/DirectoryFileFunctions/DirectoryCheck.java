@@ -66,7 +66,6 @@ public class DirectoryCheck {
    * fileList returns an List of files in a given directory
    * and error is thrown if directory does not exist.
    */
-
     public static List<File> fileList(String source) throws IOException{
      
         ArrayList myList = new ArrayList();
@@ -76,4 +75,12 @@ public class DirectoryCheck {
         return files;
     }
     
+    public static String Filename(String fpath){
+        String filenameStr = "";
+        
+        File file = new File(fpath);
+        filenameStr = file.getAbsolutePath();
+        
+        return filenameStr;
+    }
 }

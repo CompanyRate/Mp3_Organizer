@@ -4,6 +4,7 @@
  */
 package Mp3_orgProcess;
 
+import DirectoryFileFunctions.DirectoryCheck;
 import Mp3Functions.Mp3item;
 import com.beaglebuddy.mp3.MP3;
 import java.io.File;
@@ -24,6 +25,9 @@ public class ProcessFiles {
           String outDir = outputDir;
           File f = new File(file);
           
+          
+          
+          
           // Create mp3 information object
           Mp3item Mp3File = new Mp3Functions.Mp3item();
           
@@ -42,8 +46,7 @@ public class ProcessFiles {
             
             
             
-            
-            System.out.println(mp3Info.getBand() + "--" + mp3Info.getAlbum() + "__" + num);    
+        //   System.out.println(Mp3File.getArtistName() + "--" + Mp3File.getAlbumName() + "__" + num);    
              
           } 
           catch (IOException ex) { 

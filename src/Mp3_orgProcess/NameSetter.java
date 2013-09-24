@@ -13,14 +13,15 @@ public class NameSetter {
     public static String Name (String mp3info) {
         String name = mp3info;
   
-        return name;
-    }
-
-    public static String NameChecker (String name) {
-        String nameX = name;
-  
+        // check to see if the name has special characters in it.
+        if (name == null){
+            name = "Unknown";
+        } else {
+            name.replaceAll("[^a-zA-Z]+","-");
+        }
+       
         
-        return nameX;
+        return name;
     }
 
 

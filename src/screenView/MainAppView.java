@@ -147,10 +147,9 @@ public class MainAppView extends javax.swing.JFrame {
                     int cnt = 1;
           
                     for (File file : FileList) {
-                        //Process file 
-                        String fileLocation = file.toString();
-                        
-                        Mp3_orgProcess.ProcessFiles.ProcessFiles(fileLocation, output, cnt);
+                      //Process file 
+                      String fileLocation = file.toString();         
+                      Mp3_orgProcess.ProcessFiles.ProcessFiles(fileLocation, output, cnt);
                       cnt = cnt + 1;
                     }
 
