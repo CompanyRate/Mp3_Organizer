@@ -17,7 +17,8 @@ public class NameSetter {
         if (name == null){
             name = "Unknown";
         } else {
-            name.replaceAll("[^a-zA-Z]+","-");
+            name.replaceAll("[^a-zA-Z-]+","");
+    
         }
        
         
