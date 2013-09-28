@@ -46,23 +46,29 @@ public class ProcessFiles {
                 String artistNameSS = artistNameCm.replace(".", "");
                 String artistNameSS1 = artistNameCm.replace("(", "");
                        artistNameSm = artistNameSS1.replace("[^a-zA-Z-]+","");                    
-            }
-            
-        
-            
+            }            
             Mp3File.setArtistName(NameSetter.Name(artistNameSm));
-            Mp3File.setAlbumName(NameSetter.Name(mp3Info.getAlbum()));
-           
+
+            String albumName = "";
+            if (mp3Info.getAlbum() == null) {
+                albumName = "null";
+            } else {
+                String albumName1 = mp3Info.getAlbum();
+                String albumName2 = albumName1.replace(":", "");
+                albumName = albumName2;
+            }   
+            Mp3File.setAlbumName(NameSetter.Name(albumName));
+   
             String outLoc = outputDir + "\\" + Mp3File.getArtistName() + "\\" + Mp3File.getAlbumName() + "\\" + Mp3File.getFileName();
+        
             Mp3File.setNewLocation(outLoc);
-         
             //Create directory 
             FileFunctions.createDirectoryIfNeeded(outLoc);
             
             //Move File over to file directory
             FileFunctions.MoveFile(file, outLoc);
             
-            System.out.println(Mp3File.getNewLocation() + "" + Mp3File.getFileName());
+    //        System.out.println(Mp3File.getNewLocation() + "" + Mp3File.getFileName());
             
           //System.out.println(Mp3File.getArtistName() + "__" + num);    
              
